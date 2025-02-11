@@ -10,5 +10,5 @@ dependencies = [
     "pandas",
     "snowflake",
     "snowflake-ml-python",
-    "pip>=25.0",
+    "pip<25.0",
 ]
