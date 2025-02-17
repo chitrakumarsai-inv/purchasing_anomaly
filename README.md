@@ -21,10 +21,7 @@ pip install -r requirements.txt
 ## Usage
 To use the anomaly detection system, follow these steps:
 1. Prepare your purchasing data in the required format.
-2. Run the anomaly detection script:
-    ```bash
-    python detect_anomalies.py --input data/purchasing_data.csv
-    ```
+2. Run the anomaly detection script: Use the notebook for snowflake/snowpark version
 3. Review the output for any detected anomalies.
 
 ## Contributing
