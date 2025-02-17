@@ -2,4 +2,5 @@ ipykernel
 python-dotenv
 pandas
 snowflake
-snowflake-ml-python
+snowflake-snowpark-python[pandas]
+snowflake-ml-python 
