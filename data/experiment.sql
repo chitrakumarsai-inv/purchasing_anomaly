@@ -6,9 +6,24 @@ left join
     (SELECT "User ID", "User Desc", "User Manager Email"
         FROM "ZINT_MASTER"."UI_SEC"."AD Account") 
     AS ZM on ZM."User ID" = PAM."Requisitioner Master"
-    where "Purchase Doc Date" >= DATEADD(DAY, -450, GETDATE())
-    LIMIT 1000)
+    where "Purchase Doc Date" >= DATEADD(DAY, -450, GETDATE()))
 
 -- SELECT * FROM "ZINT_MASTER"."UI_SEC"."AD Account" LIMIT 10;
 
 -- select * from purch_an;
+
+
+
+SELECT *
+FROM (
+    SELECT *,
+           ROW_NUMBER() OVER (PARTITION BY PLANT_DESC ORDER BY PURCHASE_DOC_DATE DESC) AS row_num
+    FROM DS_D_WORKSPACE.PURCHASING_ANOMALY.PURCHASES_ANOMALY_RESULTS
+    WHERE PURCHASE_DOC_DATE >= DATEADD(week, -1, CURRENT_DATE())
+) subquery
+WHERE row_num <= 7
+ORDER BY PLANT_DESC, PURCHASE_DOC_DATE ASC;
+
+
+
+SELECT * FROM DS_D_WORKSPACE.PURCHASING_ANOMALY.PURCHASES_ANOMALY_RESULTS_LAST_WEEK;
