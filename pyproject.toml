@@ -11,4 +11,5 @@ dependencies = [
     "snowflake",
     "snowflake-ml-python",
     "pip<25.0",
+    "matplotlib>=3.10.1",
 ]
